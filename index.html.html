@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>مدرسة الربة الثانوية الشاملة المختلطة</title>
+
+<style>
+body{
+font-family:Tahoma;
+margin:0;
+background:#f4f6fa;
+text-align:center;
+}
+
+header{
+background:#003366;
+color:white;
+padding:20px;
+}
+
+nav button{
+background:#003366;
+color:white;
+border:none;
+margin:5px;
+padding:10px 15px;
+cursor:pointer;
+font-weight:bold;
+}
+
+nav button:hover{
+background:#ffcc00;
+color:black;
+}
+
+section{
+display:none;
+padding:25px;
+line-height:2;
+max-width:1100px;
+margin:auto;
+}
+
+.gallery{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:15px;
+margin-top:20px;
+}
+
+.gallery img, .gallery video{
+width:250px;
+height:180px;
+border-radius:12px;
+box-shadow:0 0 10px rgba(0,0,0,0.3);
+cursor:pointer;
+object-fit:cover;
+}
+
+/* نافذة التكبير */
+#lightbox{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.85);
+justify-content:center;
+align-items:center;
+z-index:1000;
+}
+
+#lightbox-content img,
+#lightbox-content video{
+max-width:85%;
+max-height:85%;
+border-radius:10px;
+}
+
+#close{
+position:absolute;
+top:20px;
+right:30px;
+color:white;
+font-size:30px;
+cursor:pointer;
+}
+
+footer{
+background:#003366;
+color:white;
+padding:10px;
+margin-top:20px;
+}
+</style>
+
+<script>
+function showPage(page){
+document.querySelectorAll("section").forEach(sec=>sec.style.display="none");
+document.getElementById(page).style.display="block";
+}
+
+function welcomeStudent(){
+let name=document.getElementById("studentName").value;
+document.getElementById("msg").innerHTML="أهلاً "+name+" 🌟 القراءة تصنع مستقبلك!";
+}
+
+function openMedia(src,type){
+let box=document.getElementById("lightbox");
+let content=document.getElementById("lightbox-content");
+content.innerHTML="";
+if(type=="video"){
+content.innerHTML=`<video controls autoplay>
+<source src="${src}" type="video/mp4">
+</video>`;
+}else{
+content.innerHTML=`<img src="${src}">`;
+}
+box.style.display="flex";
+}
+
+function closeLightbox(){
+document.getElementById("lightbox").style.display="none";
+}
+</script>
+
+</head>
+
+<body onload="showPage('home')">
+
+<header>
+<h1>مدرسة الربة الثانوية الشاملة المختلطة</h1>
+<nav>
+<button onclick="showPage('home')">الرئيسية</button>
+<button onclick="showPage('library')">المكتبة</button>
+<button onclick="showPage('activities')">النشاطات</button>
+<button onclick="showPage('workshops')">الورشات</button>
+<button onclick="showPage('murals')">الجداريات</button>
+<button onclick="showPage('radio')">الإذاعة</button>
+</nav>
+</header>
+
+<!-- الرئيسية -->
+<section id="home">
+<h2>نبذة عن المدرسة وإنجازاتها</h2>
+
+<p>
+تواصل مدرسة الربه مسيرتها المتميزة في دعم اللغة العربية وترسيخ مكانتها في نفوس الطلبة، انطلاقًا من إيمانها العميق بأن اللغة العربية ليست مجرد مادة دراسية، بل هوية وثقافة وانتماء. وقد حرصت المدرسة على تنفيذ خطط وبرامج نوعية تهدف إلى تنمية مهارات القراءة والكتابة والتحدث والاستماع لدى الطلبة، من خلال حصص تفاعلية تستخدم استراتيجيات تعليم حديثة وتقنيات مبتكرة تجعل تعلم اللغة أكثر متعة وإثراء. 
+</p>
+
+<p>
+كما نظّمت المدرسة مسابقات أدبية وثقافية متنوعة، مثل مسابقات الإلقاء الشعري، والقراءة المعبرة، والكتابة الإبداعية، والقصة القصيرة، مما أتاح للطلبة إبراز مواهبهم وصقل قدراتهم اللغوية. واهتمت كذلك بتفعيل الإذاعة المدرسية باللغة العربية الفصحى، وتخصيص مبادرات أسبوعية للاحتفاء بجمال اللغة ومفرداتها، إضافة إلى إقامة معارض للكتاب وأركان للقراءة الحرة داخل المدرسة لتعزيز ثقافة الاطلاع.
+</p>
+
+<p>
+ولم يقتصر دور المدرسة على الأنشطة الداخلية، بل شجعت طلبتها على المشاركة في الفعاليات والمسابقات الوطنية المرتبطة باللغة العربية، مما أسهم في تحقيق نتائج متميزة ورفع مستوى التحصيل الدراسي. وبهذه الجهود المتكاملة، أصبحت مدرسة الربة نموذجًا يُحتذى به في الاهتمام باللغة العربية وتعزيز حضورها في البيئة التعليمية.
+</p>
+
+<h3>📞 تواصل معنا</h3>
+<p>📧 rabbahseconary@gmail.com</p>
+<p>📱 +962791449762</p>
+</section>
+
+<!-- المكتبة -->
+<section id="library">
+<h2>المكتبة الإلكترونية</h2>
+
+<input type="text" id="studentName" placeholder="ادخل اسمك">
+<button onclick="welcomeStudent()">دخول</button>
+<p id="msg"></p>
+
+<h3>ابحث عن كتاب</h3>
+<input type="text" id="book">
+<button onclick="window.open('https://www.google.com/search?q='+document.getElementById('book').value)">
+بحث عبر الإنترنت
+</button>
+</section>
+
+<!-- النشاطات -->
+<section id="activities">
+<h2>نشاطات المدرسة</h2>
+
+<p>
+تفاخر مدرسة الربة الثانوية المختلطة بعطاءٍ لغويٍّ يزهو به الحرف، وتتباهى بجهودٍ مباركةٍ جعلت من اللغة العربية نبضًا حيًّا في أروقة المدرسة وساحاتها. فقد آمنت بأن العربية ليست مادة دراسية فحسب، بل روح هويةٍ، وجسر انتماءٍ، ولسان حضارةٍ عريقة.
+</p>
+
+<p>
+ومن هذا الإيمان انطلقت مسيرتها في تفعيل اللغة العربية عبر باقةٍ من الأنشطة والفعاليات الثقافية والأدبية التي أشرقت بها المنابر الصفية والإذاعات الصباحية؛ فتعانقت فيها القصيدة مع الإلقاء، وتألقت المسابقات اللغوية بروح التحدي والإبداع، وصدحت الأمسيات الشعرية بأصوات الطلبة وهم ينسجون الكلمة فخرًا واعتزازًا. كما أطلقت المدرسة مبادراتٍ رائدةً تعمّق حب اللغة الأم في القلوب، بوصفها لغة القرآن الكريم وعنوان الهوية ومرآة الانتماء.
+</p>
+
+<p>
+وما هذه الإنجازات إلا ثمرة تعاونٍ صادقٍ بين هيئةٍ تدريسيةٍ واعيةٍ برسالتها، وطلبةٍ مبدعين حملوا القلم شغفًا، والكلمة مسؤوليةً. فارتقى الوعي اللغوي، وتنامت مهارات القراءة والكتابة والتعبير، وترسّخت في النفوس روح التميز، لتبقى العربية في مدرسة الربة منارة علمٍ، وميدان إبداعٍ، وأفق أملٍ متجدد.
+</p>
+
+<div class="gallery">
+<script>
+for(let i=1;i<=56;i++){
+document.write(`<img src="images/activities/${i}.jpeg" onclick="openMedia('images/activities/${i}.jpeg','image')">`);
+}
+</script>
+
+<video width="250" height="180" controls
+onclick="openMedia('images/activities/63.mp4','video')">
+<source src="images/activities/63.mp4" type="video/mp4">
+</video>
+
+</div>
+</section>
+
+<!-- الورشات -->
+<section id="workshops">
+<h2>ورشات دعم اللغة العربية</h2>
+
+<p>
+يُعدّ الشاعر الدكتور طالب الفرايه من الأصوات الأدبية المتميزة التي جمعت بين الحسّ الشعري العميق والرؤية الأكاديمية الواعية، حيث عُرف بقصائده التي تعبّر عن الهوية والانتماء وقضايا المجتمع بلغةٍ جزلة وصورٍ شعريةٍ مؤثرة. وقد تجلّى حضوره الثقافي في زيارته لمدرسة الربة الثانوية الشاملة المختلطة، حيث التقى بالطلبة في لقاءٍ أدبيٍّ ثريٍّ اتسم بالحوار والتفاعل. وخلال اللقاء تحدّث عن تجربته الشعرية ومسيرته الأدبية، وألقى نماذج من قصائده، موضحًا أهمية القراءة والاطلاع في تنمية الموهبة وصقل الشخصية. كما أجاب عن أسئلة الطالبات وشجّعهن على التعبير عن أفكارهن بثقة، مؤكّدًا أن اللغة العربية وعاء الفكر والإبداع. وقد تركت زيارته أثرًا طيبًا في نفوس الطلبة، وأسهمت في تعزيز حبّ الأدب والشعر لديهم.
+</p>
+
+<div class="gallery">
+<script>
+for(let i=70;i<=76;i++){
+document.write(`<img src="images/library/${i}.jpeg" onclick="openMedia('images/library/${i}.jpeg','image')">`);
+}
+</script>
+
+<video width="250" height="180" controls
+onclick="openMedia('images/library/77.mp4','video')">
+<source src="images/library/77.mp4" type="video/mp4">
+</video>
+
+<video width="250" height="180" controls
+onclick="openMedia('images/library/78.mp4','video')">
+<source src="images/library/78.mp4" type="video/mp4">
+</video>
+
+</div>
+</section>
+
+<!-- الجداريات -->
+<section id="murals">
+<h2>جداريات اللغة العربية</h2>
+
+<p>
+جسّدت مدرسة الربة الثانوية الشاملة المختلطة اهتمامها العميق بدعم القراءة وتعزيز مكانة اللغة العربية من خلال تنفيذ مجموعة من الجداريات الهادفة داخل أروقة المدرسة وساحاتها، حيث زُيّنت الجدران بعبارات تحفيزية عن قيمة الكتاب، ومقولات مأثورة لكبار الأدباء والشعراء، ولوحات فنية تتضمن أبياتًا شعرية ونصوصًا مختارة تُبرز جمال اللغة وروعتها. وقد صُممت هذه الجداريات بأسلوب فني جذاب وألوان معبّرة تستقطب أنظار الطلبة وتشجعهم على التأمل والقراءة، لتتحول الجدران إلى مساحات تعليمية نابضة بالحياة. وأسهمت هذه المبادرة في خلق بيئة مدرسية محفزة ثقافيًا، تعزز ارتباط الطلبة بلغتهم الأم، وتغرس في نفوسهم حب المطالعة والاعتزاز بالهوية العربية.
+</p>
+
+<div class="gallery">
+<script>
+for(let i=80;i<=82;i++){
+document.write(`<img src="images/murals/${i}.jpeg" onclick="openMedia('images/murals/${i}.jpeg','image')">`);
+}
+</script>
+</div>
+</section>
+
+<!-- الإذاعة -->
+<section id="radio">
+<h2>الإذاعة المدرسية</h2>
+
+<p>
+تهتم مدرسة الربة الثانوية الشاملة المختلطة بتفعيل الإذاعة المدرسية باللغة العربية الفصحى، وتخصيص مبادرات أسبوعية للاحتفاء بجمال اللغة ومفرداتها، مما يسهم في تعزيز مهارات الطلبة اللغوية، ويغرس روح الانتماء للهوية العربية في نفوسهم. وتتنوع فقرات الإذاعة بين تقديم الأخبار، والمقاطع الثقافية، والمسابقات اللغوية، والإلقاء الشعري، بالإضافة إلى برامج إذاعية تفاعلية تشرك جميع الطلبة في التعبير عن أفكارهم ومواهبهم.
+</p>
+
+<div class="gallery">
+<script>
+for(let i=60;i<=61;i++){
+document.write(`<img src="images/radio/${i}.jpeg" onclick="openMedia('images/radio/${i}.jpeg','image')">`);
+}
+</script>
+
+<video width="250" height="180" controls
+onclick="openMedia('images/radio/63.mp4','video')">
+<source src="images/radio/63.mp4" type="video/mp4">
+</video>
+
+</div>
+</section>
+
+<div id="lightbox" onclick="closeLightbox()">
+<span id="close">✖</span>
+<div id="lightbox-content"></div>
+</div>
+
+<footer>
+جميع الحقوق محفوظة مدرسة الربة الثانوية الشاملة المختلطة © 2026
+</footer>
+
+</body>
+</html>
